@@ -1,0 +1,14 @@
+{
+    "name": "tom_d/trello-clone",
+    "description": "A Trello clone for learning and practise",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Tom",
+            "email": "twdickman@gmail.com"
+        }
+    ],
+    "require": {
+        "twbs/bootstrap": "4.1.3"
+    }
+}
