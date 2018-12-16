@@ -6,6 +6,14 @@
  * Time: 9:32 PM
  */
 
-Router::get('/', 'PagesController@index');
+use App\Core\Router;
 
-Router::get('/boards', 'PagesController@boards');
+$router->get('/', 'PagesController@index');
+
+$router->get('/boards', 'PagesController@boards');
+
+$router->get('/user/{id}/profile', 'UserController@show');
+
+$router->get('/user/{id}/board/{id}', 'UserController@show<BoardController@show');
+
+?>

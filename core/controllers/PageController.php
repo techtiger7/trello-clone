@@ -6,6 +6,8 @@
  * Time: 6:59 PM
  */
 
+namespace App\Core\Controllers;
+
 class PageController
 {
     public static function index()
