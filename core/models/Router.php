@@ -19,13 +19,19 @@ class Router
 
     ];
 
+    // private constructor to prevent instantiation of this class
     private function __construct()
     {
     }
 
+    /**
+     * @param $routefile the path to the file containing registered routes
+     * @return Router
+     */
     public static function load($routefile)
     {
-        $router = new self;
+        // Use late binding to create a new Router
+        $router = new static;
 
         require_once $routefile;
 
@@ -67,7 +73,8 @@ class Router
         }
     }
 
-    public function direct($method, $path) {
+    public function direct($method, $path)
+    {
 
         $sub_paths = preg_split( '/\//', $path, NULL, PREG_SPLIT_NO_EMPTY);
 
@@ -76,11 +83,24 @@ class Router
             $route_sub_paths = preg_split('/\//', $route, NULL, PREG_SPLIT_NO_EMPTY);
 
             if ($this->matchFound($route_sub_paths, $sub_paths)) {
-                return $controller;
+
+                return $this->callRoute(...explode('@', $controller));
+
             }
 
         }
 
         throw new \Exception("No such route as $path");
+    }
+
+    public function callRoute($controller, $action)
+    {
+
+        $controller = "App\\Core\\Controllers\\{$controller}";
+
+        $controller = new $controller;
+
+        $controller->$action();
+
     }
 }

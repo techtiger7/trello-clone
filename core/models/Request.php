@@ -22,16 +22,6 @@ class Request
         return (parse_url($_SERVER['REQUEST_URI'])['path']);
     }
 
-    private function getUriSubPaths()
-    {
-        return explode(static::getUriPath());
-    }
-
-
-    public static function getMatchingRoute(){
-
-    }
-
     public static function getMethod()
     {
         return $_SERVER['REQUEST_METHOD'];

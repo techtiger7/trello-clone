@@ -13,9 +13,9 @@ use App\Core\{Router, Request};
 //Router::direct(Request::uri(), Request::method());
 
 try {
-    echo Router::load('routes.php')->direct(Request::getMethod(), Request::getUriPath(strtok($_SERVER["REQUEST_URI"], '?')));
+    echo Router::load('routes.php')->direct(Request::getMethod(), Request::getUriPath());
 } catch (Exception $e) {
-    var_dump($e->getTrace());
+    var_dump($e->getMessage());
 }
 
 //
