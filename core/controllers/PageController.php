@@ -15,8 +15,4 @@ class PageController
         require_once 'core/views/index.view.php';
     }
 
-    public static function boards()
-    {
-        require_once 'core/views/boards.view.php';
-    }
 }

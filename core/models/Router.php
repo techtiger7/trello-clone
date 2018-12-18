@@ -73,6 +73,22 @@ class Router
         }
     }
 
+    public function patch($path, $controller)
+    {
+        if(!array_key_exists($path, $this->routes['POST']))
+        {
+            $this->routes['PATCH'][$path] = $controller;
+        }
+    }
+
+    public function delete($path, $controller)
+    {
+        if(!array_key_exists($path, $this->routes['POST']))
+        {
+            $this->routes['DELETE'][$path] = $controller;
+        }
+    }
+
     public function direct($method, $path)
     {
 

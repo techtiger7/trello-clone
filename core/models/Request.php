@@ -11,29 +11,46 @@ namespace App\Core;
 
 class Request
 {
+    private $uri;
+    private $method;
+    private $query;
 
     // Static class, empty contructor to avoid instantiation
-    private function __construct()
+    public function __construct()
     {
+        $this->setPath();
+        $this->setMethod();
+        $this->setQuery();
     }
 
-    public static function getUriPath()
+    public function setPath()
     {
-        return (parse_url($_SERVER['REQUEST_URI'])['path']);
+        $this->uri = parse_url($_SERVER['REQUEST_URI'])['path'];
     }
 
-    public static function getMethod()
+    public function getPath()
     {
-        return $_SERVER['REQUEST_METHOD'];
+        return $this->uri;
     }
 
-    public static function getQuery()
+    public function getMethod()
     {
-        return htmlspecialchars($_SERVER['QUERY_STRING']);
+        return $this->method;
     }
 
-    public static function validate()
+    public function setMethod()
     {
-
+        $this->method = $_SERVER['REQUEST_METHOD'];
     }
+
+    public function getQuery()
+    {
+        return $this->query;
+    }
+
+    public function setQuery()
+    {
+        $this->query = htmlspecialchars($_SERVER['QUERY_STRING']);
+    }
+
 }

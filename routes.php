@@ -10,10 +10,16 @@
 
 $router->get('/', 'PageController@index');
 
-$router->get('/boards', 'PageController@boards');
+$router->get('/boards', 'BoardController@index');
 
-$router->get('/user/{id}', 'UserController@show');
+$router->get('/boards/create', 'BoardController@create');
 
-$router->get('/user/{id}/board/{id}', 'UserController@show<BoardController@show');
+$router->post('/boards', 'BoardController@store');
+
+$router->get('/boards/{id}/edit', 'BoardController@edit');
+
+$router->patch('/boards/{id}', 'BoardController@update');
+
+$router->delete('/boards/{id}', 'BoardController@destroy');
 
 ?>
