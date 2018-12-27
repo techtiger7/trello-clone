@@ -10,6 +10,10 @@
 
 $router->get('/', 'PageController@index');
 
+$router->get('/login', 'PageController@login');
+
+$router->post('login', 'UserController@login');
+
 $router->get('/boards', 'BoardController@index');
 
 $router->get('/boards/create', 'BoardController@create');

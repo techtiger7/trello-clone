@@ -10,7 +10,7 @@ namespace App\Core\Controllers;
 
 class PageController
 {
-    public static function index()
+    public function index()
     {
         require_once 'core/views/index.view.php';
     }

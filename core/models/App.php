@@ -8,8 +8,6 @@
 
 namespace App\Core;
 
-use App\Core\{Request, Response};
-
 class App
 {
     private $req;

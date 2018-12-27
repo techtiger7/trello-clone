@@ -12,31 +12,31 @@ class BoardController
 {
     public static function index()
     {
-        require_once 'core/views/boards.view.php';
+        require_once 'core/views/boards/index.view.php';
     }
 
     public function create()
     {
-
+        require_once 'core/views/boards/create.view.php';
     }
 
     public function store()
     {
-
+        require_once 'core/views/boards/store.view.php';
     }
 
     public function edit()
     {
-
+        require_once 'core/views/boards/edit.view.php';
     }
 
     public function update()
     {
-
+        require_once 'core/views/boards/update.view.php';
     }
 
     public function destroy()
     {
-
+        require_once 'core/views/boards/destroy.view.php';
     }
 }

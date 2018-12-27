@@ -1,0 +1,149 @@
+@import '/public/styles/normalize.css';
+
+/*************** FONTS ****************/
+
+/* pacifico-regular - latin */
+@font-face {
+    font-family: 'Pacifico';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/public/fonts/pacifico-v12-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Pacifico Regular'), local('Pacifico-Regular'),
+    url('/public/fonts/pacifico-v12-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/public/fonts/pacifico-v12-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('/public/fonts/pacifico-v12-latin-regular.woff') format('woff'), /* Modern Browsers */
+    url('/public/fonts/pacifico-v12-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/public/fonts/pacifico-v12-latin-regular.svg#Pacifico') format('svg'); /* Legacy iOS */
+}
+
+/*************** FLEX BOX ******************/
+.flex-container {
+    display: flex;
+}
+
+.flex-item {
+    flex-grow: 1;
+}
+
+.flex-item-nogrow {
+    flex-grow: 0;
+}
+
+.flex-item-noshrink {
+    flex-shrink: 0;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-column-reverse {
+    flex-direction: column-reverse;
+}
+
+.flex-row-reverse {
+    flex-direction: row-reverse;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-wrap-reverse {
+    flex-wrap: wrap-reverse;
+}
+
+.flex-justify-start {
+    justify-content: flex-start;
+}
+
+.flex-justify-end {
+    justify-content: flex-end;
+}
+
+.flex-justify-center {
+    justify-content: center;
+}
+
+.flex-justify-between {
+    justify-content: space-between;
+}
+
+.flex-justify-around {
+    justify-content: space-around;
+}
+
+.flex-justify-evenly {
+    justify-content: space-evenly;
+}
+
+.flex-align-start {
+    align-items: flex-start;
+}
+
+.flex-align-end {
+    align-items: flex-end;
+}
+
+.flex-align-center {
+    align-items: center;
+}
+
+.flex-align-stretch {
+    align-items: stretch;
+}
+
+.flex-align-baseline {
+    align-items: baseline;
+}
+
+.flex-content-start {
+    align-content: flex-start;
+}
+
+.flex-content-end {
+    align-content: flex-end;
+}
+
+.flex-content-center {
+    align-content: center;
+}
+
+.flex-content-stretch {
+    align-content: stretch;
+}
+
+.flex-content-between {
+    align-content: space-between;
+}
+
+.flex-content-around {
+    align-content: space-around;
+}
+
+.flex-self-start {
+    align-self: flex-start;
+}
+
+.flex-self-end {
+    align-self: flex-end;
+}
+
+.flex-self-center {
+    align-self: center;
+}
+
+.flex-self-baseline {
+    align-self: baseline;
+}
+
+.flex-self-stretch {
+    align-self: stretch;
+}
+
+/** Navigation CSS **/
+
