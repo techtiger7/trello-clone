@@ -8,43 +8,26 @@
 
 namespace App\Core;
 
+/**
+ * Class App
+ * @package App\Core
+ * @description A static dependency injection container for the application
+ */
 class App
 {
-    private $req;
+    private static $dependencies = [];
 
-    public function __construct($routefile)
+    public static function bind($key, $value)
     {
-        $this->setReq();
-
-        $this->loadRoute($routefile);
-
+        static::$dependencies[$key] = $value;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getReq()
+    public static function get($key)
     {
-        return $this->req;
-    }
-
-    /**
-     * @param mixed $req
-     */
-    public function setReq()
-    {
-        $this->req = new Request();
-    }
-
-    public function loadRoute($routefile)
-    {
-        try {
-            Router::load($routefile)->direct($this->req->getMethod(), $this->req->getPath());
+        if(!array_key_exists($key, static::$dependencies)) {
+            return new Exception("No $key dependency in container.");
         }
-        catch (Exception $e) {
-            echo json_encode($e->getTrace(), JSON_UNESCAPED_UNICODE);
-        }
+        return static::$dependencies[$key];
     }
-
 
 }

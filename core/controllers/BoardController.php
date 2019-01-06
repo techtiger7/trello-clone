@@ -8,11 +8,23 @@
 
 namespace App\Core\Controllers;
 
+use App\Core\App;
+
 class BoardController
 {
-    public static function index()
+
+    private $database;
+
+    public function __construct()
     {
-        require_once 'core/views/boards/index.view.php';
+        $this->database = App::get('database');
+    }
+
+    public function index()
+    {
+        $boards = $this->database->selectAll('boards');
+
+        return require_once 'core/views/boards/index.view.php';
     }
 
     public function create()
@@ -22,7 +34,14 @@ class BoardController
 
     public function store()
     {
-        require_once 'core/views/boards/store.view.php';
+        $values = [
+            'title' => $_POST['title'],
+            'description' => $_POST['description']
+        ];
+
+        $this->database->store('boards', $values);
+
+        $this->index();
     }
 
     public function edit()

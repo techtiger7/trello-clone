@@ -12,7 +12,13 @@ class PageController
 {
     public function index()
     {
+
         require_once 'core/views/index.view.php';
+    }
+
+    public function login()
+    {
+
     }
 
 }

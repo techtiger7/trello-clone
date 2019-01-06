@@ -8,8 +8,14 @@
 
 require_once 'vendor/autoload.php';
 
-use \App\Core\App;
+use App\Core\{App, Database, Request, Response, Router};
 
 session_start();
 
-$app = new App('routes.php');
+App::bind('database', new Database('core/config/.env'));
+
+App::bind('req', $req = new Request());
+
+App::bind('res', $res = new Response());
+
+Router::load('routes.php')->direct($req->getMethod(), $req->getPath());

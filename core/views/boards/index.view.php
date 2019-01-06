@@ -9,5 +9,8 @@
 </head>
 <body>
     <h1>Boards</h1>
+    <?php foreach ($boards as $board) : ?>
+    <p>Title: <?= $board['title'] ?>, Description: <?= $board['description'] ?></p>
+    <?php endforeach; ?>
 </body>
 </html>

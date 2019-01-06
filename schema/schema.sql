@@ -2,7 +2,7 @@ DROP SCHEMA boards CASCADE;
 
 CREATE SCHEMA boards;
 
-CREATE TABLE IF NOT EXISTS boards.users (
+CREATE TABLE IF NOT EXISTS users (
   id  bigserial PRIMARY KEY,
   email  text,
   first_name  text,
@@ -13,31 +13,31 @@ CREATE TABLE IF NOT EXISTS boards.users (
   created  timestamp
 );
 
-CREATE TABLE IF NOT EXISTS boards.boards (
+CREATE TABLE IF NOT EXISTS boards (
   id  bigserial PRIMARY KEY,
   title  text,
   description  text
 );
 
-CREATE TABLE IF NOT EXISTS boards.user_boards (
-  user_id  bigserial REFERENCES boards.users(id),
-  board_id  bigserial REFERENCES boards.boards(id),
+CREATE TABLE IF NOT EXISTS user_boards (
+  user_id  bigserial REFERENCES users(id),
+  board_id  bigserial REFERENCES boards(id),
   allocated  timestamp,
   PRIMARY KEY (user_id, board_id)
 );
 
-CREATE TABLE IF NOT EXISTS boards.lists (
+CREATE TABLE IF NOT EXISTS lists (
   id  bigserial PRIMARY KEY,
   name  text
 );
 
-CREATE TABLE IF NOT EXISTS boards.board_lists (
-  board_id  bigserial REFERENCES boards.boards(id),
-  list_id  bigserial REFERENCES boards.lists(id),
+CREATE TABLE IF NOT EXISTS board_lists (
+  board_id  bigserial REFERENCES boards(id),
+  list_id  bigserial REFERENCES lists(id),
   PRIMARY KEY (board_id, list_id)
 );
 
-CREATE TABLE IF NOT EXISTS boards.tasks (
+CREATE TABLE IF NOT EXISTS tasks (
   id  bigserial PRIMARY KEY,
   title  text,
   description  text,
@@ -45,15 +45,15 @@ CREATE TABLE IF NOT EXISTS boards.tasks (
   date_finish  timestamp
 );
 
-CREATE TABLE IF NOT EXISTS boards.list_tasks (
-  list_id  bigserial REFERENCES boards.lists(id),
-  task_id  bigserial REFERENCES boards.tasks(id),
+CREATE TABLE IF NOT EXISTS list_tasks (
+  list_id  bigserial REFERENCES lists(id),
+  task_id  bigserial REFERENCES tasks(id),
   PRIMARY KEY (list_id, task_id)
 );
 
-CREATE TABLE IF NOT EXISTS boards.user_tasks (
-  user_id  bigserial REFERENCES boards.users(id),
-  task_id  bigserial REFERENCES boards.tasks(id),
+CREATE TABLE IF NOT EXISTS user_tasks (
+  user_id  bigserial REFERENCES users(id),
+  task_id  bigserial REFERENCES tasks(id),
   commenced  timestamp,
   finished  timestamp,
   PRIMARY KEY (user_id, task_id)
